@@ -10,4 +10,47 @@ describe('Home page', () => {
     helper.waitForElementVisibility(logo)
     helper.waitForElementVisibility(createButton)
   })
+
+  it('should valid message', () => {
+    const buttonRegister = element(by.id('submit-button'))
+    const createButton = element(by.className('add-video-button'))
+    
+    helper.clickWhenClickable(createButton)
+    helper.clickWhenClickable(buttonRegister)
+    expect(element(by.className('error')).getText()).toEqual('Title is required')
+  })
+
+  it('should save a video', () => {
+    const fieldtitle = element(by.id('video-title-input'))
+    const fieldDescription = element(by.id('video-description-input'))
+    const fieldURL = element(by.id('video-url-input'))
+    const buttonRegister = element(by.id('submit-button'))
+    const createButton = element(by.className('add-video-button'))
+
+    helper.clickWhenClickable(createButton)
+    helper.fillFieldWithTextWhenVisible(fieldtitle, 'Title Tests 001')
+    helper.fillFieldWithTextWhenVisible(fieldDescription, 'Description of videos')
+    helper.fillFieldWithTextWhenVisible(fieldURL, 'https://www.youtube.com/watch?v=M76qUQTt_Sw')
+    helper.clickWhenClickable(buttonRegister)
+  })
+
+  it('should change a video', () => {
+    const selectEdit = element(by.css('div.video-title'))
+    const buttonEdit = element(by.id('edit'))
+    const fieldtitle = element(by.id('video-title-input'))
+    const buttonSave = element(by.className('edit-video-button'))
+    
+    helper.clickWhenClickable(selectEdit)
+    helper.clickWhenClickable(buttonEdit)
+    helper.clearFieldWhenVisibleAndFillItWithText(fieldtitle, 'Change successfully')
+    helper.clickWhenClickable(buttonSave)
+  })
+
+  it('should delete a video', () => {
+    const selectEdit = element(by.css('div.video-title'))
+    const buttonDelete = element(by.id('delete'))
+
+    helper.clickWhenClickable(selectEdit)
+    helper.clickWhenClickable(buttonDelete)
+  })
 })
