@@ -8,7 +8,8 @@
     "start": "node ./bin/www",
     "lint": "npx standard",
     "lint:fix": "npx standard --fix",
-    "test": "webdriver-manager update && protractor tests/protractor.conf.js"
+    "pretest": "webdriver-manager update && npm run drop-db && npm run seed-db",
+    "test": "protractor tests/protractor.conf.js"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
