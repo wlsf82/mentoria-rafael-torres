@@ -7,7 +7,7 @@ describe('Create page', () => {
   it('should required fields', () => {
     const buttonRegister = element(by.id('submit-button'))
     const messageFieldTitle = element.all(by.className('error'))
-    
+
     helper.clickWhenClickable(buttonRegister)
     helper.waitForElementVisibility(messageFieldTitle.last())
 
@@ -19,7 +19,7 @@ describe('Create page', () => {
     const fieldDescription = element(by.id('video-description-input'))
     const fieldURL = element(by.id('video-url-input'))
     const messageFieldTitle = element.all(by.className('error'))
-    
+
     helper.fillFieldWithTextWhenVisible(fieldDescription, 'Description a video')
     helper.fillFieldWithTextWhenVisible(fieldURL, 'Link')
     helper.clickWhenClickable(buttonRegister)
@@ -33,7 +33,7 @@ describe('Create page', () => {
     const fieldTitle = element(by.id('video-title-input'))
     const fieldURL = element(by.id('video-url-input'))
     const messageFieldTitle = element.all(by.className('error'))
-    
+
     helper.fillFieldWithTextWhenVisible(fieldTitle, 'Title 001')
     helper.clearFieldWhenVisibleAndFillItWithText(fieldURL, '')
     helper.clickWhenClickable(buttonRegister)
